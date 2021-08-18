@@ -9,5 +9,3 @@ export const filteredSelector = createSelector(
     contacts.filter(contact =>
     contact.name.toLocaleLowerCase().includes(filterValue)),
 );
-
- console.log('fff')

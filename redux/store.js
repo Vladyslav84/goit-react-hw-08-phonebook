@@ -3,7 +3,6 @@ import contactsSlice from './slices/contacts';
 import filterSlice from './slices/filter';
 import authSlice from '../redux/slices/authentication/authentication';
 
- console.log('fff')
 const rootReducer = {
   contactsSlice,
   filterSlice,
@@ -16,5 +15,5 @@ const store = configureStore({
     rootReducer,
   devTools: process.env.NODE_ENV !== "production",
 });
-
+console.log(store.getState())
 export default store;
