@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
+  
     const classes = useStyles();
     const emailId = uuidv4();
     const nameId = uuidv4();
