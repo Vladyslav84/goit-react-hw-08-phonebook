@@ -15,5 +15,5 @@ const store = configureStore({
     rootReducer,
   devTools: process.env.NODE_ENV !== "production",
 });
-console.log(store.getState())
+
 export default store;

@@ -9,119 +9,200 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { useDispatch, useSelector } from 'react-redux';
+import aut_operation from '../redux/slices/authentication/aut_operation';
 // import authSelectors from '../../redux/slices/authentication/auth-selectors';
 
 // console.log(authSelectors)
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+// function Copyright() {
+//   return (
+//     <Typography variant="body2" color="textSecondary" align="center">
+//       {'Copyright © '}
+//       <Link color="inherit" href="https://material-ui.com/">
+//         Your Website
+//       </Link>{' '}
+//       {new Date().getFullYear()}
+//       {'.'}
+//     </Typography>
+//   );
+// }
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   paper: {
+//     marginTop: theme.spacing(8),
+//     display: 'flex',
+//     flexDirection: 'column',
+//     alignItems: 'center',
+//   },
+//   avatar: {
+//     margin: theme.spacing(1),
+//     backgroundColor: theme.palette.secondary.main,
+//   },
+//   form: {
+//     width: '100%', // Fix IE 11 issue.
+//     marginTop: theme.spacing(3),
+//   },
+//   submit: {
+//     margin: theme.spacing(3, 0, 2),
+//   },
+// }));
 
-export default function SignUp() {
+// export default function SignUp() {
   
-    const classes = useStyles();
-    const emailId = uuidv4();
-    const nameId = uuidv4();
-    const passwordId = uuidv4();
+//     const classes = useStyles();
+//     const emailId = uuidv4();
+//     const nameId = uuidv4();
+//   const passwordId = uuidv4();
+//   const dispatch = useDispatch();
+  
+//   const handleSubmit = evt => {
+//          evt.preventDefault();
+// console.log(evt)
+//                 dispatch(aut_operation.register({
+//                 name: evt.target.elements.firstName.value,
+//                   email: evt.target.elements.email.value,
+//                 password: evt.target.elements.password.value,
+//             }))
+       
+//         // if (allContacts.some(contact => contact.name === evt.target.elements.inputName.value))
+//         // {
+//         //     alert(`${ evt.target.elements.inputName.value } is already in contacts`)
+//         // } else
+//         // {
+//         //     dispatch(operations.postContacts({
+//         //         name: evt.target.elements.inputName.value,
+//         //         number: evt.target.elements.inputNumber.value,
+//         //     }))
+//         // };
+//         // evt.target.reset();
+//     };
     
-  return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        {/* <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar> */}
-        <Typography component="h1" variant="h5">
-          Sign up
-        </Typography>
-        <form className={classes.form} noValidate>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id={nameId}
-                label="Name"
-                name="firstName"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id={emailId}
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id={passwordId}
-                autoComplete="current-password"
-              />
-            </Grid>
+//   return (
+//     <Container component="main" maxWidth="xs">
+//       <CssBaseline />
+//       <div className={classes.paper}>
+//         {/* <Avatar className={classes.avatar}>
+//           <LockOutlinedIcon />
+//         </Avatar> */}
+//         <Typography component="h1" variant="h5">
+//           Sign up
+//         </Typography>
+//         <form className={classes.form} noValidate>
+//           <Grid container spacing={2}>
+//             <Grid item xs={12}>
+//               <TextField
+//                 variant="outlined"
+//                 required
+//                 fullWidth
+//                 id={nameId}
+//                 label="Name"
+//                 name="firstName"
+//                 autoFocus
+//               />
+//             </Grid>
+//             <Grid item xs={12}>
+//               <TextField
+//                 variant="outlined"
+//                 required
+//                 fullWidth
+//                 id={emailId}
+//                 label="Email Address"
+//                 name="email"
+//                 autoComplete="email"
+//               />
+//             </Grid>
+//             <Grid item xs={12}>
+//               <TextField
+//                 variant="outlined"
+//                 required
+//                 fullWidth
+//                 name="password"
+//                 label="Password"
+//                 type="password"
+//                 id={passwordId}
+//                 autoComplete="current-password"
+//               />
+//             </Grid>
 
-          </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign Up
-          </Button>
-          <Grid container justifyContent="flex-end">
-            <Grid item>
-              <Link href="/singin" variant="body2">
-                Already have an account? Sign in
-              </Link>
-            </Grid>
-          </Grid>
+//           </Grid>
+//           <Button
+//             type="submit"
+//             fullWidth
+//             variant="contained"
+//             color="primary"
+//             className={classes.submit}
+//             onSubmit={handleSubmit}
+//           >
+//             Sign Up
+//           </Button>
+//           <Grid container justifyContent="flex-end">
+//             <Grid item>
+//               <Link href="/singin" variant="body2">
+//                 Already have an account? Sign in
+//               </Link>
+//             </Grid>
+//           </Grid>
+//         </form>
+//       </div>
+//       <Box mt={5}>
+//         <Copyright />
+//       </Box>
+//     </Container>
+//   );
+// }
+
+export default function SignUp () {
+    // const dispatch = useDispatch();
+    // const allContacts = useSelector(getContacts);
+
+    const handleSubmit = evt => {
+
+      evt.preventDefault();
+      console.log('dd')
+        // if (allContacts.some(contact => contact.name === evt.target.elements.inputName.value))
+        // {
+        //     alert(`${ evt.target.elements.inputName.value } is already in contacts`)
+        // } else
+        // {
+        //     dispatch(operations.postContacts({
+        //         name: evt.target.elements.inputName.value,
+        //         number: evt.target.elements.inputNumber.value,
+        //     }))
+        // };
+        evt.target.reset();
+    };
+
+    const numberInputId = uuidv4();
+    const nameInputId = uuidv4();
+
+    return (
+        <form onSubmit={handleSubmit} >
+            <span>Name</span>
+            <label >
+                <input
+                    autoComplete="off"
+                    type="text"
+                    name="inputName"
+                    pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+                    title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+                    required
+                    id={nameInputId}
+                />
+            </label>
+            <span >Number</span>
+            <label >
+                <input
+                    autoComplete="off"
+                    type="tel"
+                    name="inputNumber"
+                    pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+                    title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
+                    required
+                    id={numberInputId}
+                />
+            </label>
+            <button type="submit" >Add contact</button>
         </form>
-      </div>
-      <Box mt={5}>
-        <Copyright />
-      </Box>
-    </Container>
-  );
+    )
 }

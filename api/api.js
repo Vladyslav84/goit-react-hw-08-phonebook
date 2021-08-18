@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-    axios.defaults.baseURL = 'http://localhost:3003';
+    axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
    
     export async function fetcContacts ()  {
         const response = await axios.get(`/contacts`);
