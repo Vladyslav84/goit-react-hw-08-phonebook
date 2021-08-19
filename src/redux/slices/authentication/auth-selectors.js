@@ -1,11 +1,9 @@
-const getIsLoggedIn = state => state.auth.isLoggedIn;
+const getIsLoggedIn = state => state.authSlice.isLoggedIn;
 
-const getUsername = state => state.auth.user.name;
+const getUsername = state => state.authSlice.user.name;
 
 const authSelectors = {
   getIsLoggedIn,
   getUsername,
 };
 export default authSelectors;
-
-console.log('ll')

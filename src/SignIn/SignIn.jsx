@@ -8,6 +8,9 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import aut_operation from '../redux/slices/authentication/aut_operation';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 function Copyright() {
   return (
@@ -43,7 +46,30 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignIn() {
+  const dispatch = useDispatch();
   const classes = useStyles();
+
+    const handleSubmit = evt => {
+         evt.preventDefault();
+console.log(evt.target.elements.email.value)
+                dispatch(aut_operation.logIn({
+                  email: evt.target.elements.email.value,
+                  password: evt.target.elements.password.value,
+
+            }))
+       
+        // if (allContacts.some(contact => contact.name === evt.target.elements.inputName.value))
+        // {
+        //     alert(`${ evt.target.elements.inputName.value } is already in contacts`)
+        // } else
+        // {
+        //     dispatch(operations.postContacts({
+        //         name: evt.target.elements.inputName.value,
+        //         number: evt.target.elements.inputNumber.value,
+        //     }))
+        // };
+        evt.target.reset();
+    };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -54,7 +80,7 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <TextField
             variant="outlined"
             margin="normal"

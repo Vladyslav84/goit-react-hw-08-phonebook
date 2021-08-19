@@ -3,9 +3,10 @@ import contactsSlice from './slices/contacts';
 import filterSlice from './slices/filter';
 import authSlice from '../redux/slices/authentication/authentication';
 
+
 const rootReducer = {
-  contactsSlice,
-  filterSlice,
+  // contactsSlice,
+  // filterSlice,
   authSlice
   
 };
