@@ -5,8 +5,8 @@ import authSlice from '../redux/slices/authentication/authentication';
 
 
 const rootReducer = {
-  // contactsSlice,
-  // filterSlice,
+  contactsSlice,
+  filterSlice,
   authSlice
   
 };

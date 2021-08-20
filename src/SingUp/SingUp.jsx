@@ -11,6 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { useDispatch, useSelector } from 'react-redux';
 import aut_operation from '../redux/slices/authentication/aut_operation';
+import { Redirect, useHistory  } from 'react-router-dom';
 // import authSelectors from '../../redux/slices/authentication/auth-selectors';
 
 // console.log(authSelectors)
@@ -49,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
-  
+   const history = useHistory();
     const classes = useStyles();
     const emailId = uuidv4();
     const nameId = uuidv4();
@@ -64,7 +65,7 @@ export default function SignUp() {
                   email: evt.target.elements.email.value,
                 password: evt.target.elements.password.value,
             }))
-       
+      //  history.push({pathname:"/contacts"})
         // if (allContacts.some(contact => contact.name === evt.target.elements.inputName.value))
         // {
         //     alert(`${ evt.target.elements.inputName.value } is already in contacts`)

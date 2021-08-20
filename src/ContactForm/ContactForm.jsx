@@ -2,16 +2,23 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import s from './ContactForm.module.css';
 import { v4 as uuidv4 } from 'uuid';
-// import * as operations from '../../redux/operations';
-// import { getContacts } from '../../redux/selectors';
+import aut_operation from '../redux/slices/authentication/aut_operation';
+import * as operations from '../redux/operations';
+// import { getContacts } from '../../redux/selectors
+import ContactList from '../../src/ContactList/ContactList';
 
 export default function ContactForm() {
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     // const allContacts = useSelector(getContacts);
 
     const handleSubmit = evt => {
 
         evt.preventDefault();
+
+            dispatch(operations.postContacts({
+                name: evt.target.elements.inputName.value,
+                number: evt.target.elements.inputNumber.value,
+            }))
         // if (allContacts.some(contact => contact.name === evt.target.elements.inputName.value))
         // {
         //     alert(`${ evt.target.elements.inputName.value } is already in contacts`)
@@ -29,6 +36,10 @@ export default function ContactForm() {
     const nameInputId = uuidv4();
 
     return (
+        <>
+        <button onClick={()=>dispatch(aut_operation.logOut())}>
+            Log out
+        </button>
         <form onSubmit={handleSubmit} className={s.form}>
             <span>Name</span>
             <label className={s.formItem}>
@@ -55,6 +66,8 @@ export default function ContactForm() {
                 />
             </label>
             <button type="submit" className={s.btn}>Add contact</button>
-        </form>
+            </form>
+             <ContactList/>
+            </>
     )
 }

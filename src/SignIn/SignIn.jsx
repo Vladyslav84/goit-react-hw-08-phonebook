@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import aut_operation from '../redux/slices/authentication/aut_operation';
 import { useDispatch, useSelector } from 'react-redux';
+import { Redirect, useHistory  } from 'react-router-dom';
 
 
 function Copyright() {
@@ -48,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
 export default function SignIn() {
   const dispatch = useDispatch();
   const classes = useStyles();
+  const history = useHistory();
 
     const handleSubmit = evt => {
          evt.preventDefault();
@@ -55,9 +57,8 @@ console.log(evt.target.elements.email.value)
                 dispatch(aut_operation.logIn({
                   email: evt.target.elements.email.value,
                   password: evt.target.elements.password.value,
-
             }))
-       
+        // history.push({pathname:"/contacts"})
         // if (allContacts.some(contact => contact.name === evt.target.elements.inputName.value))
         // {
         //     alert(`${ evt.target.elements.inputName.value } is already in contacts`)
@@ -113,6 +114,7 @@ console.log(evt.target.elements.email.value)
             Sign In
           </Button>
         </form>
+
       </div>
       <Box mt={8}>
         <Copyright />
