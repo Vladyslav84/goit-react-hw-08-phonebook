@@ -4,6 +4,7 @@ import SignUp from '../src/SingUp/SingUp';
 import SingIn from '../src/SignIn/SignIn';
 import ContactForm from '../src/ContactForm/ContactForm'
 import React, { Component } from 'react';
+import PrivateRoute from '../src/PrivateRoute';
 // import ContactForm from '../src/ContactForm/ContactForm';
 
 function App() {
@@ -18,9 +19,9 @@ function App() {
         <SingIn />
         {/* <ContactForm path="/contactform" /> */}
        </Route>
-      <Route>
-        <ContactForm path="/contactform"/>
-      </Route>
+      <PrivateRoute>
+        <ContactForm path="/contactform" redirectTo="/"/>
+      </PrivateRoute>
           
     </Switch>
     </>
