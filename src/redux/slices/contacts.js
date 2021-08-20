@@ -12,11 +12,9 @@ const contactsSlice = createSlice({
       initialState,
     extraReducers: {
         [operations.fetcContacts.fulfilled](state, action) {
-            console.log(action.payload)
             state.entities = action.payload;
                 // status: null,
                 // error: null,
-
         },
        [operations.fetcContacts.pending](state, action) { 
             return {
@@ -34,10 +32,11 @@ const contactsSlice = createSlice({
         },
         [operations.postContacts.fulfilled](state, action) {
             // state.entities = state.entities.push(action.payload);
+            //    entities: [...state.entities, ...action.payload],
             console.log(state.entities)
             return { 
                 ...state,
-                entities: [...state.entities, ...action.payload],
+                entities: state.entities.push(action.payload),
                 status: null,
                 error: null,
             }
