@@ -1,5 +1,5 @@
 
-import { Switch } from 'react-router-dom';
+import { Switch, Redirect } from 'react-router-dom';
 import SignUp from '../src/SingUp/SingUp';
 import SingIn from '../src/SignIn/SignIn';
 import ContactForm from '../src/ContactForm/ContactForm'
@@ -20,8 +20,8 @@ function App() {
   }, [dispatch]);
 
   return (
-<>
-      {/* <Link to="/contactform">PB</Link> */}
+
+    <>{isFetchingCurrentUser ? (<h2>Loading...</h2>) : (
       <Switch>
         <Suspense>
           <PublicRoute exact path="/" redirectTo='/contactform' restricted>
@@ -34,8 +34,7 @@ function App() {
            <ContactForm />
           </PrivateRoute  >
        </Suspense>
-    </Switch>
-    </>
+    </Switch>)}</>
   );
 }
 
