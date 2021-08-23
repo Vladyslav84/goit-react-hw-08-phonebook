@@ -29,20 +29,23 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
-const rootReducer = combineReducers({
-  contactsSlice,
-  filterSlice,
-  authSlice
-  // perReducer: persistReducer(authPersistConfig,authSlice),
+// const rootReducer = combineReducers({
+//   contactsSlice,
+//   filterSlice,
+//   authSlice
+//   // perReducer: persistReducer(authPersistConfig,authSlice),
  
-});
-const perReducer = persistReducer(authPersistConfig, rootReducer);
-
-console.log(authSlice);
+// });
+// const perReducer = persistReducer(authPersistConfig, rootReducer);
  
 const store = configureStore({
    reducer:
-    perReducer,
+  {
+    authSlice: persistReducer(authPersistConfig, authSlice),
+    contactsSlice :contactsSlice,
+    filterSlice: filterSlice,
+   
+  },
   middleware,
   devTools: process.env.NODE_ENV !== "production",
 });

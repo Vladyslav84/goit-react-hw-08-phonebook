@@ -4,13 +4,15 @@ import s from './ContactForm.module.css';
 import { v4 as uuidv4 } from 'uuid';
 import aut_operation from '../redux/slices/authentication/aut_operation';
 import * as operations from '../redux/operations';
-import { filteredSelector } from '../redux/selectors';
+import { filteredSelector, getContacts } from '../redux/selectors';
 import Filter from '../Filter/Filter';
 import ContactList from '../../src/ContactList/ContactList';
 
 export default function ContactForm() {
-       const dispatch = useDispatch();
-       const allContacts = useSelector(filteredSelector);
+
+    const contacts = useSelector(getContacts) 
+    const dispatch = useDispatch();
+    const allContacts = useSelector(filteredSelector);
        const handleSubmit = evt => {
 
         evt.preventDefault();
@@ -62,8 +64,8 @@ export default function ContactForm() {
             </label>
             <button type="submit" className={s.btn}>Add contact</button>
             </form>
-           {allContacts.length >= 0 &&  <Filter/>}
-            <ContactList />
+           {contacts.length > 0 &&  <Filter/>}
+           <ContactList />
             </>
     )
 }
