@@ -5,13 +5,12 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import aut_operation from '../redux/slices/authentication/aut_operation';
-import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useHistory  } from 'react-router-dom';
-import authSelectors from '../redux/slices/authentication/auth-selectors';
+import { useDispatch } from 'react-redux';
 
 function Copyright() {
   return (
@@ -49,26 +48,13 @@ const useStyles = makeStyles((theme) => ({
 export default function SignIn() {
   const dispatch = useDispatch();
   const classes = useStyles();
-  const history = useHistory();
-
     const handleSubmit = evt => {
-         evt.preventDefault();
-console.log(evt.target.elements.email.value)
+                 evt.preventDefault();
                 dispatch(aut_operation.logIn({
                   email: evt.target.elements.email.value,
                   password: evt.target.elements.password.value,
             }))
-        // history.push({pathname:"/contacts"})
-        // if (allContacts.some(contact => contact.name === evt.target.elements.inputName.value))
-        // {
-        //     alert(`${ evt.target.elements.inputName.value } is already in contacts`)
-        // } else
-        // {
-        //     dispatch(operations.postContacts({
-        //         name: evt.target.elements.inputName.value,
-        //         number: evt.target.elements.inputNumber.value,
-        //     }))
-        // };
+
         evt.target.reset();
     };
 
@@ -113,8 +99,15 @@ console.log(evt.target.elements.email.value)
           >
             Sign In
           </Button>
+          <Grid container justifyContent="flex-end">
+            <Grid item>
+              <Link href="/" variant="body2">
+                Don't have an account? Sign up
+              </Link>
+            </Grid>
+          </Grid>
         </form>
-
+ <button type='button' onClick={()=> dispatch(aut_operation.logOut())}>Log out</button>
       </div>
       <Box mt={8}>
         <Copyright />

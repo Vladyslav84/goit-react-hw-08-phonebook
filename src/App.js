@@ -1,11 +1,13 @@
 // import Navigation from '../src/Navigation/Navigation';
-import { Switch, Route, Redirect, Link  } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import SignUp from '../src/SingUp/SingUp';
 import SingIn from '../src/SignIn/SignIn';
 import ContactForm from '../src/ContactForm/ContactForm'
-import React, { Component, Suspense } from 'react';
+import React, {  Suspense } from 'react';
 import PrivateRoute from '../src/PrivateRoute';
+import PublicRoute from '../src/PublicRoute'
 // import ContactForm from '../src/ContactForm/ContactForm';
+
 
 function App() {
   return (
@@ -13,22 +15,16 @@ function App() {
       {/* <Link to="/contactform">PB</Link> */}
       <Switch>
         <Suspense>
-          <Route exact path="/" >
+          <PublicRoute exact path="/" redirectTo='/contactform' restricted>
            <SignUp />
-          </Route>
-          <Route exact path="/singin" >
+          </PublicRoute>
+          <PublicRoute exact path="/singin" redirectTo='/contactform' restricted>
            <SingIn />
-        {/* <ContactForm path="/contactform" /> */}
-           </Route>
-           {/* <PrivateRoute path="/contactform" redirectTo="/">
-        <ContactForm />
-          </PrivateRoute  > */}
-          {/* <Route path="/contactform">
-            <ContactForm />
-          </Route> */}
-          
-          
-</Suspense>
+          </PublicRoute>
+           <PrivateRoute exact path="/contactform" redirectTo="/">
+           <ContactForm />
+          </PrivateRoute  >
+       </Suspense>
     </Switch>
     </>
   );

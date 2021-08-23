@@ -30,27 +30,27 @@ const contactsSlice = createSlice({
                 error: 'Error',
             }
         },
-        [operations.postContacts.fulfilled](state, action) {
-            // state.entities = state.entities.push(action.payload);
-            //    entities: [...state.entities, ...action.payload],
-            console.log(state.entities)
+        [operations.postContacts.fulfilled](state, { payload }) {
+
             return { 
                 ...state,
-                entities: state.entities.push(action.payload),
+                entities: [...state.entities, payload],
                 status: null,
                 error: null,
             }
         },
-        [operations.postContacts.pending](state, action) { 
+        [operations.postContacts.pending](state, action) {
+
             return {
                 ...state,
+                entities: [...state.entities],
                 status: 'Loading',
             }
         },
-        [operations.postContacts.rejected](state, action) { 
+        [operations.postContacts.rejected](state, _) { 
             return {
                 ...state,
-                status: null,
+                entities: state.entities,
                 error: 'Error',
             }
         },
@@ -62,14 +62,14 @@ const contactsSlice = createSlice({
                 error: null,
             }
         },
-       [operations.deleteContacts.pending](state, action) { 
+       [operations.deleteContacts.pending](state, _) { 
             return {
                 ...state,
                 status: 'Loading',
                 error: null,
             }
         },
-        [operations.deleteContacts.rejected](state, action) { 
+        [operations.deleteContacts.rejected](state, _) { 
             return {
                 ...state,
                 status: null,

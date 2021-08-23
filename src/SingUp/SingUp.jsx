@@ -9,12 +9,8 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import aut_operation from '../redux/slices/authentication/aut_operation';
-import { Redirect, useHistory  } from 'react-router-dom';
-// import authSelectors from '../../redux/slices/authentication/auth-selectors';
-
-// console.log(authSelectors)
 
 function Copyright() {
   return (
@@ -50,7 +46,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
-   const history = useHistory();
     const classes = useStyles();
     const emailId = uuidv4();
     const nameId = uuidv4();
@@ -58,24 +53,14 @@ export default function SignUp() {
   const dispatch = useDispatch();
   
   const handleSubmit = evt => {
-         evt.preventDefault();
-// console.log(evt.target.elements.firstName.value)
+                evt.preventDefault();
+
                 dispatch(aut_operation.register({
                 name: evt.target.elements.firstName.value,
                   email: evt.target.elements.email.value,
                 password: evt.target.elements.password.value,
             }))
-      //  history.push({pathname:"/contacts"})
-        // if (allContacts.some(contact => contact.name === evt.target.elements.inputName.value))
-        // {
-        //     alert(`${ evt.target.elements.inputName.value } is already in contacts`)
-        // } else
-        // {
-        //     dispatch(operations.postContacts({
-        //         name: evt.target.elements.inputName.value,
-        //         number: evt.target.elements.inputNumber.value,
-        //     }))
-        // };
+
         evt.target.reset();
     };
     
@@ -83,9 +68,6 @@ export default function SignUp() {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        {/* <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar> */}
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
