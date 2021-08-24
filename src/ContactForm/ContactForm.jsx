@@ -6,13 +6,16 @@ import * as operations from '../redux/operations';
 import { filteredSelector, getContacts } from '../redux/selectors';
 import Filter from '../Filter/Filter';
 import ContactList from '../../src/ContactList/ContactList';
-import AppBarMenu from '../../src/AppBar/AppBar'
+import AppBarMenu from '../../src/AppBar/AppBar';
+import toast from 'react-hot-toast';
 
 export default function ContactForm() {
 
+    const notify = (msg) => toast.success(msg);
     const contacts = useSelector(getContacts) 
     const dispatch = useDispatch();
     const allContacts = useSelector(filteredSelector);
+
        const handleSubmit = evt => {
 
         evt.preventDefault();
@@ -25,13 +28,15 @@ export default function ContactForm() {
                 name: evt.target.elements.inputName.value,
                 number: evt.target.elements.inputNumber.value,
             }))
-        };
-        evt.target.reset();
-    };
-
+           };
+           notify(`Contact ${evt.target.elements.inputName.value} added` );
+           evt.target.reset();
+           
+       };
+    
     const numberInputId = uuidv4();
     const nameInputId = uuidv4();
-
+    
     return (
         <>
         <AppBarMenu/>
@@ -64,7 +69,7 @@ export default function ContactForm() {
             </form>
             <button type="submit" className={s.btn}>Add contact</button>
            {contacts.length > 0 &&  <Filter/>}
-           <ContactList />
+            <ContactList />
             </>
     )
 }
