@@ -1,5 +1,5 @@
 
-import { Switch, Redirect } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import SignUp from '../src/SingUp/SingUp';
 import SingIn from '../src/SignIn/SignIn';
 import ContactForm from '../src/ContactForm/ContactForm'

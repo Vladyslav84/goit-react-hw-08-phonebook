@@ -2,11 +2,11 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import s from './ContactForm.module.css';
 import { v4 as uuidv4 } from 'uuid';
-import aut_operation from '../redux/slices/authentication/aut_operation';
 import * as operations from '../redux/operations';
 import { filteredSelector, getContacts } from '../redux/selectors';
 import Filter from '../Filter/Filter';
 import ContactList from '../../src/ContactList/ContactList';
+import AppBarMenu from '../../src/AppBar/AppBar'
 
 export default function ContactForm() {
 
@@ -34,9 +34,7 @@ export default function ContactForm() {
 
     return (
         <>
-        <div className={s.btnLogout} ><button onClick={()=>dispatch(aut_operation.logOut())} >
-            Log out
-        </button></div>
+        <AppBarMenu/>
         <form onSubmit={handleSubmit} className={s.form}>
             <span>Name</span>
             <label className={s.formItem}>
@@ -64,6 +62,7 @@ export default function ContactForm() {
             </label>
             <button type="submit" className={s.btn}>Add contact</button>
             </form>
+            <button type="submit" className={s.btn}>Add contact</button>
            {contacts.length > 0 &&  <Filter/>}
            <ContactList />
             </>

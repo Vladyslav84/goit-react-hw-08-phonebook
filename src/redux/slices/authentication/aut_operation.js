@@ -48,7 +48,6 @@ const fetchCurrentUser = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.authSlice.token;
-    console.log(state)
   
     if (persistedToken === null) {
       console.log('Токена нет, уходим из fetchCurrentUser');
