@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import { v4 as uuidv4 } from 'uuid';
-import Link from '@material-ui/core/Link';
+// import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
@@ -11,14 +11,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { useDispatch } from 'react-redux';
 import aut_operation from '../redux/slices/authentication/aut_operation';
+import {Link} from "react-router-dom";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -65,6 +63,7 @@ export default function SignUp() {
     };
     
   return (
+    <>
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
@@ -120,16 +119,21 @@ export default function SignUp() {
           </Button>
           <Grid container justifyContent="flex-end">
             <Grid item>
-              <Link href="/singin" variant="body2">
+              <Link to="/singin" variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>
           </Grid>
+
         </form>
       </div>
       <Box mt={5}>
         <Copyright />
       </Box>
     </Container>
+             {/* <Link to="/singin" variant="body2">
+          Already have an account? Sign in
+              </Link> */}
+    </>
   );
 }

@@ -20,7 +20,7 @@ export default function ContactForm() {
         evt.preventDefault();
         if (allContacts.some(contact => contact.name === evt.target.elements.inputName.value))
         {
-            alert(`${ evt.target.elements.inputName.value } is already in contacts`)
+            toast(`${evt.target.elements.inputName.value} is already in contacts`);
         } else
         {
             dispatch(operations.postContacts({
@@ -30,7 +30,6 @@ export default function ContactForm() {
            };
            toast.success(`Contact ${evt.target.elements.inputName.value} added`);
            evt.target.reset();
-           
        };
     
     const numberInputId = uuidv4();
