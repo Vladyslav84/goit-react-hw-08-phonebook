@@ -3,18 +3,17 @@ import s from './ContactList.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { filteredSelector } from '../redux/selectors';
 import * as operations from '../redux/operations';
-import toast from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function ContactList  ()  {
 
-  const notify = (msg) => toast.error(msg);
   const dispatch = useDispatch();
   useEffect(() => dispatch(operations.fetcContacts()), [dispatch]);
   const filteredContactList = useSelector(filteredSelector);
 
   const deleteContact = (userId, userName) => {
     dispatch(operations.deleteContacts(userId))
-    notify(`Contact ${userName} added` );
+    toast.error(`Contact ${userName} deleted`);
   }
 
   return (
@@ -25,7 +24,7 @@ export default function ContactList  ()  {
           <button type='button' className={s.btn}
             onClick={() => deleteContact(user.id, user.name)}
           >Delete</button>
-          
+          <Toaster/>
         </li>
       ))
       } 

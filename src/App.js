@@ -23,7 +23,7 @@ function App() {
 
     <>{isFetchingCurrentUser ? (<h2>Loading...</h2>) : (
       <Switch>
-        <Suspense>
+        <Suspense fallback='Loading...'>
           <PublicRoute exact path="/" redirectTo='/contactform' restricted>
            <SignUp />
           </PublicRoute>

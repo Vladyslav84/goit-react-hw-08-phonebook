@@ -107,7 +107,6 @@ export default function SignIn() {
             </Grid>
           </Grid>
         </form>
- <button type='button' onClick={()=> dispatch(aut_operation.logOut())}>Log out</button>
       </div>
       <Box mt={8}>
         <Copyright />
