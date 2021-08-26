@@ -29,7 +29,7 @@ function App() {
           <PublicRoute exact path="/singin" redirectTo='/contactform' restricted>
            <SingIn />
           </PublicRoute>
-           <PrivateRoute path="/contactform" >
+           <PrivateRoute path="/contactform">
            <ContactForm />
           </PrivateRoute  >
         </Suspense>
