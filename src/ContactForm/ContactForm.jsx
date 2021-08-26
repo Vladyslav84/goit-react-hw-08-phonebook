@@ -68,6 +68,10 @@ export default function ContactForm() {
             </form>
             {contacts.length > 0 && <Filter />}
             <ContactList />
+                {/* <div>
+      <button onClick={notify}>Make me a toast</button>
+      <Toaster />
+    </div> */}
             </>
     )
 }
