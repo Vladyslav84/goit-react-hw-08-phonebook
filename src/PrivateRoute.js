@@ -5,14 +5,12 @@ import React from 'react';
 
 export default function PrivateRoute({
   children,
-  redirectTo = '/',
   ...routeProps
 }) {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-console.log(isLoggedIn)
   return (
     <Route {...routeProps}>
-      {isLoggedIn ? children : <Redirect to={redirectTo} />}
+      {isLoggedIn ? children : <Redirect to='/' />}
     </Route>
   );
 }

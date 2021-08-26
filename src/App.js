@@ -1,5 +1,5 @@
 
-import { Redirect, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import SignUp from '../src/SingUp/SingUp';
 import SingIn from '../src/SignIn/SignIn';
 import ContactForm from '../src/ContactForm/ContactForm'
@@ -29,7 +29,7 @@ function App() {
           <PublicRoute exact path="/singin" redirectTo='/contactform' restricted>
            <SingIn />
           </PublicRoute>
-           <PrivateRoute path="/contactform" redirectTo="/">
+           <PrivateRoute path="/contactform" >
            <ContactForm />
           </PrivateRoute  >
         </Suspense>
