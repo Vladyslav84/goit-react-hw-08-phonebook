@@ -28,15 +28,6 @@ const authPersistConfig = {
   storage,
   whitelist: ['token'],
 };
-
-// const rootReducer = combineReducers({
-//   contactsSlice,
-//   filterSlice,
-//   authSlice
-//   // perReducer: persistReducer(authPersistConfig,authSlice),
- 
-// });
-// const perReducer = persistReducer(authPersistConfig, rootReducer);
  
 const store = configureStore({
    reducer:

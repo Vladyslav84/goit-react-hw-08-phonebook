@@ -13,9 +13,7 @@ const contactsSlice = createSlice({
     extraReducers: {
         [operations.fetcContacts.fulfilled](state, action) {
             state.entities = action.payload;
-                // status: null,
-                // error: null,
-        },
+            },
        [operations.fetcContacts.pending](state, action) { 
             return {
                 ...state,

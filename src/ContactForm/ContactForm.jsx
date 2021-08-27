@@ -21,14 +21,15 @@ export default function ContactForm() {
         if (allContacts.some(contact => contact.name === evt.target.elements.inputName.value))
         {
             toast(`${evt.target.elements.inputName.value} is already in contacts`);
-        } else
+        }
+        else
         {
             dispatch(operations.postContacts({
                 name: evt.target.elements.inputName.value,
                 number: evt.target.elements.inputNumber.value,
             }))
+            toast.success(`Contact ${evt.target.elements.inputName.value} added`);
            };
-           toast.success(`Contact ${evt.target.elements.inputName.value} added`);
            evt.target.reset();
        };
     
@@ -68,10 +69,6 @@ export default function ContactForm() {
             </form>
             {contacts.length > 0 && <Filter />}
             <ContactList />
-                {/* <div>
-      <button onClick={notify}>Make me a toast</button>
-      <Toaster />
-    </div> */}
             </>
     )
 }

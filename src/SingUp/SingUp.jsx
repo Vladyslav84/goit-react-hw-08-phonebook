@@ -3,7 +3,6 @@ import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import { v4 as uuidv4 } from 'uuid';
-// import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
@@ -52,13 +51,18 @@ export default function SignUp() {
   
   const handleSubmit = evt => {
                 evt.preventDefault();
-
-                dispatch(aut_operation.register({
-                name: evt.target.elements.firstName.value,
-                  email: evt.target.elements.email.value,
-                password: evt.target.elements.password.value,
+    if (evt.target.elements.firstName.value === '' ||
+      evt.target.elements.email.value === '' ||
+      evt.target.elements.password.value === '') {
+      alert('Check the entered data');
+      
+    } else {
+        dispatch(aut_operation.register({
+        name: evt.target.elements.firstName.value,
+        email: evt.target.elements.email.value,
+        password: evt.target.elements.password.value,
             }))
-
+      }
         evt.target.reset();
     };
     
@@ -131,9 +135,6 @@ export default function SignUp() {
         <Copyright />
       </Box>
     </Container>
-             {/* <Link to="/singin" variant="body2">
-          Already have an account? Sign in
-              </Link> */}
     </>
   );
 }

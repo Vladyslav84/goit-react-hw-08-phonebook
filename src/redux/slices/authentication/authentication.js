@@ -13,30 +13,19 @@ const authSlice = createSlice({
   initialState,
   extraReducers: {
     [aut_operation.register.fulfilled](state, action) {
-      if (action.payload) {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
-      } else {
-        alert( "Check the entered data")
-      }
-     
     },
     [aut_operation.register.rejected](state, _) {
-      alert( "Check the entered data")
-    
       state.user = null;
       state.token = null;
       state.isLoggedIn = false;
     },
     [aut_operation.logIn.fulfilled](state, action) {
-     if (action.payload) {
-      state.user = action.payload.user;
+       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
-      }else {
-        alert( "Check the entered data")
-      }
     },
     [aut_operation.logOut.fulfilled](state, _) {
       state.user = { name: null, email: null };

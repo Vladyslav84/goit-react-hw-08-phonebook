@@ -50,12 +50,16 @@ export default function SignIn() {
   const dispatch = useDispatch();
   const classes = useStyles();
     const handleSubmit = evt => {
-                 evt.preventDefault();
-                dispatch(aut_operation.logIn({
-                  email: evt.target.elements.email.value,
-                  password: evt.target.elements.password.value,
-            }))
-
+      evt.preventDefault();
+      if (evt.target.elements.email.value === '' ||
+        evt.target.elements.password.value === '') {
+        alert('Check the entered data');
+      } else {
+          dispatch(aut_operation.logIn({
+          email: evt.target.elements.email.value,
+          password: evt.target.elements.password.value,
+         }))
+      }
         evt.target.reset();
     };
 
@@ -115,9 +119,6 @@ export default function SignIn() {
         <Copyright />
       </Box>
     </Container>
-              {/* <Link to="/" variant="body2">
-                Don't have an account? Sign up
-              </Link> */}
     </>
   );
 }
